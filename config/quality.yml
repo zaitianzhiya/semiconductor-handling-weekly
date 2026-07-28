@@ -1,0 +1,34 @@
+# ── Semiconductor Wafer Handling Weekly Digest — 质量评分配置 ──
+
+# 可信度评分权重（跨生态独立源交叉验证）
+scoring:
+  tier_1_weight: 40      # Tier 1 源每个 40 分
+  tier_2_weight: 25      # Tier 2 源每个 25 分
+  max_score: 100         # 封顶
+  min_score_for_A: 80    # A 级 = 交叉验证 3+ 独立源
+  min_score_for_B: 60    # B 级 = 2 独立源
+  min_score_for_C: 30    # C 级 = 单一源确认
+                          # D 级 = 30 以下 / 仅骨架关键词
+
+# 生态系统独立权重（用于交叉验证）
+ecosystem_weights:
+  jp_handling: 1.0       # 日本传输设备 (RORZE/Daifuku/Murata/Hirata/SINFONIA)
+  us_handling: 1.0       # 美国传输设备 (Brooks/Nidec Genmark/Kensington)
+  cn_handling: 0.9       # 中国传输设备 (果纳/弥费/SRT/新松)
+  kr_handling: 0.8       # 韩国传输设备 (SEMES/Cymechs)
+  global_handling: 1.0   # 全球行业媒体/分析机构
+
+# 5 维度评分权重
+dimension_weights:
+  tech_significance: 30       # 技术突破性
+  market_impact: 25           # 市场影响力
+  supply_chain: 20            # 供应链关键度
+  geopolitical: 15            # 地缘政治权重
+  novelty: 10                 # 行业新颖度
+
+# 质量过滤阈值
+filter:
+  min_title_length: 10     # 标题最短
+  min_desc_length: 30      # 描述最短
+  require_citation: true   # 必须有关联源
+  max_age_days: 14         # 最多 14 天前

@@ -1,0 +1,179 @@
+sources:
+
+  # ═══ Tier 1 — 一手/原创信息 (15 DDG 真实搜索) ═══
+  rorze:
+    name: "RORZE / 乐孜芯创"
+    tier: 1
+    ecosystem: jp_handling
+    type: web_search
+    keywords: ["RORZE EFEM wafer", "RORZE semiconductor handling", "RORZE sorter robot", "RORZE Automation 乐孜芯创", "RORZE load port news"]
+    max_items: 5
+
+  brooks:
+    name: "Brooks Automation"
+    tier: 1
+    ecosystem: us_handling
+    type: web_search
+    keywords: ["Brooks Automation EFEM", "Brooks wafer handling robot", "Brooks Automation semiconductor", "MagnaTran wafer transfer", "Brooks sorter news"]
+    max_items: 5
+
+  daifuku:
+    name: "Daifuku / 大福"
+    tier: 1
+    ecosystem: jp_handling
+    type: web_search
+    keywords: ["Daifuku AMHS semiconductor", "Daifuku OHT cleanway", "Daifuku fab automation", "大福 天车 半导体", "Daifuku stocker news"]
+    max_items: 5
+
+  murata:
+    name: "Murata Machinery / 村田机械"
+    tier: 1
+    ecosystem: jp_handling
+    type: web_search
+    keywords: ["Murata Machinery AMHS", "Murata OHT semiconductor", "村田机械 天车", "Murata fab automation", "Murata stocker semiconductor"]
+    max_items: 5
+
+  hirata:
+    name: "Hirata / 平田机工"
+    tier: 1
+    ecosystem: jp_handling
+    type: web_search
+    keywords: ["Hirata EFEM semiconductor", "Hirata wafer handling robot", "平田机工 半导体", "Hirata load port", "Hirata Automation news"]
+    max_items: 5
+
+  nidec_genmark:
+    name: "Nidec / Genmark Automation"
+    tier: 1
+    ecosystem: us_handling
+    type: web_search
+    keywords: ["Nidec Genmark EFEM", "Genmark Automation wafer", "Nidec semiconductor robot", "Genmark sorter wafer handling", "Nidec precision semiconductor"]
+    max_items: 5
+
+  sinfonia:
+    name: "SINFONIA Technology"
+    tier: 1
+    ecosystem: jp_handling
+    type: web_search
+    keywords: ["SINFONIA load port", "SINFONIA Technology wafer", "SINFONIA semiconductor handling", "SINFONIA robot wafer", "信浓电气 晶圆"]
+    max_items: 5
+
+  guona:
+    name: "果纳半导体 Guona"
+    tier: 1
+    ecosystem: cn_handling
+    type: web_search
+    keywords: ["果纳半导体 EFEM", "果纳半导体 AMHS", "果纳半导体 晶圆传输", "Guona Semiconductor wafer", "果纳 港交所 IPO"]
+    max_items: 5
+
+  mifei:
+    name: "弥费科技 Mifei"
+    tier: 1
+    ecosystem: cn_handling
+    type: web_search
+    keywords: ["弥费科技 OHT", "弥费科技 AMHS", "弥费科技 天车", "Mifei Technology wafer", "弥费科技 上市 融资"]
+    max_items: 5
+
+  srt_wafer:
+    name: "SRT / 微法尔"
+    tier: 1
+    ecosystem: cn_handling
+    type: web_search
+    keywords: ["SRT 微法尔 EFEM", "SRT wafer handling robot", "微法尔 晶圆分选", "SRT semiconductor transfer", "WFR wafer transport"]
+    max_items: 5
+
+  siasun:
+    name: "新松机器人 SIASUN"
+    tier: 1
+    ecosystem: cn_handling
+    type: web_search
+    keywords: ["SIASUN wafer robot", "新松 晶圆 机械手", "SIASUN semiconductor handling", "新松 半导体 传输", "新松 洁净机器人"]
+    max_items: 5
+
+  semiconductor_digest:
+    name: "Semiconductor Digest"
+    tier: 1
+    ecosystem: global_handling
+    type: web_search
+    keywords: ["Semiconductor Digest wafer handling", "Semiconductor Digest AMHS", "Semiconductor Digest fab automation", "wafer transport equipment", "semiconductor material handling"]
+    max_items: 5
+
+  digitimes_transport:
+    name: "DIGITIMES wafer handling"
+    tier: 1
+    ecosystem: global_handling
+    type: web_search
+    keywords: ["DIGITIMES wafer handling", "DIGITIMES AMHS", "DIGITIMES fab automation", "Taiwan semiconductor transport", "DIGITIMES automation equipment"]
+    max_items: 5
+
+  nikkei_amhs:
+    name: "Nikkei fab automation"
+    tier: 1
+    ecosystem: jp_handling
+    type: web_search
+    keywords: ["Nikkei semiconductor handling", "Nikkei fab automation", "日本 晶圆 搬运 设备", "日本 半导体 天车", "日本 晶圆 自动 化 设备"]
+    max_items: 5
+
+  ee_times_manufacturing:
+    name: "EE Times manufacturing"
+    tier: 1
+    ecosystem: global_handling
+    type: web_search
+    keywords: ["EE Times semiconductor manufacturing", "EE Times fab automation", "EE Times wafer transport", "EE Times AMHS OHT", "EE Times equipment front end"]
+    max_items: 5
+
+  # ═══ Tier 2 — 二手/垂直源 (7 关键词骨架) ═══
+  gartner_amhs:
+    name: "Gartner AMHS reports"
+    tier: 2
+    ecosystem: global_handling
+    type: web_search
+    keywords: ["Gartner AMHS market", "Gartner automated material handling semiconductor", "AMHS market forecast", "automated material handling revenue", "OHT market size"]
+    max_items: 3
+
+  yole_handling:
+    name: "Yole wafer handling"
+    tier: 2
+    ecosystem: global_handling
+    type: web_search
+    keywords: ["Yole wafer handling equipment", "Yole semiconductor packaging automation", "Yole EFEM market", "wafer handling market report", "Yole fab equipment"]
+    max_items: 3
+
+  semi_amhs:
+    name: "SEMI fab automation"
+    tier: 2
+    ecosystem: global_handling
+    type: web_search
+    keywords: ["SEMI fab automation", "SEMI wafer transport", "SEMI equipment billings", "SEMI semiconductor manufacturing", "SEMI standards wafer handling"]
+    max_items: 3
+
+  ccid_amhs:
+    name: "CCID / 赛迪 AMHS"
+    tier: 2
+    ecosystem: cn_handling
+    type: web_search
+    keywords: ["赛迪 AMHS 市场", "赛迪 半导体 传输 设备", "中国 AMHS 产业", "晶圆 传输 国产化", "中国 自动 物料 搬运"]
+    max_items: 3
+
+  miit_report:
+    name: "工信部设备报告"
+    tier: 2
+    ecosystem: cn_handling
+    type: web_search
+    keywords: ["工信部 半导体 设备", "中国 晶圆 设备 国产化", "半导体 传输 设备 政策", "集成电路 设备 自主", "工信部 芯片 制造 装备"]
+    max_items: 3
+
+  techinsights_fab:
+    name: "TechInsights fab automation"
+    tier: 2
+    ecosystem: global_handling
+    type: web_search
+    keywords: ["TechInsights fab automation", "TechInsights wafer fab equipment", "semiconductor factory automation", "fab material handling", "wafer transport technology"]
+    max_items: 3
+
+  qyresearch_handling:
+    name: "QYResearch wafer handling"
+    tier: 2
+    ecosystem: global_handling
+    type: web_search
+    keywords: ["QYResearch wafer handling", "QYResearch AMHS market", "EFEM market report", "load port market forecast", "wafer sorter market"]
+    max_items: 3
