@@ -4,7 +4,7 @@ name: Wafer Handling Weekly Digest
 
 on:
   schedule:
-    - cron: '52 10 * * 1'
+    - cron: '35 10 * * 1'
   workflow_dispatch: {}
 
 concurrency:
