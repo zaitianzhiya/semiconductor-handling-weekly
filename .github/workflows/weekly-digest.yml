@@ -5,7 +5,13 @@ name: Wafer Handling Weekly Digest
 on:
   schedule:
     - cron: '35 10 * * 1'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      week:
+        description: 'Target week (YYYY-Wnn), empty = current week'
+        required: false
+        type: string
+
 
 concurrency:
   group: weekly-wafer-handling-digest
@@ -41,6 +47,7 @@ jobs:
       - name: Run weekly pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          REPORT_WEEK: ${{ github.event.inputs.week || '' }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python run.py --mode weekly
 
