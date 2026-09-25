@@ -1,6 +1,7 @@
 """Orchestrator: collect -> filter -> score -> AI -> render pipeline."""
 
 import argparse
+import re
 import json
 import time
 import os
@@ -113,14 +114,29 @@ SEMI_CATEGORY_KEYWORDS: dict[str, list[str]] = {
 
 
 def _auto_categorize(record: EventRecord, config: dict) -> list[str]:
-    """Wafer handling domain keyword classification."""
-    text = f"{record.title} {record.description}".lower()
+    """Auto-classify based on title keyword matching (word-boundary for ASCII, substring for CJK)."""
+    text = (record.title or "").lower()
+    category_mapping = config.get("category_mapping", {})
     matched: list[str] = []
-    for cat_id, keywords in SEMI_CATEGORY_KEYWORDS.items():
-        if any(kw.lower() in text for kw in keywords):
-            matched.append(cat_id)
-    return matched[:3]
+    for cat_id, keywords in category_mapping.items():
+        for kw in keywords:
+            if _kw_match((kw or "").lower(), text):
+                cat_name = cat_id
+                for cc in config.get("categories", []):
+                    if cc.get("id") == cat_id:
+                        cat_name = cc.get("name", cat_id)
+                        break
+                matched.append(cat_name)
+                break
+    return matched
 
+
+def _kw_match(kw: str, text: str) -> bool:
+    if not kw:
+        return False
+    if any("\u4e00" <= ch <= "\u9fff" for ch in kw):
+        return kw in text
+    return re.search(rf"(?<![a-z0-9]){re.escape(kw)}(?![a-z0-9])", text) is not None
 
 def _merge_records(records: list[EventRecord]) -> list[EventRecord]:
     """Merge records with same event_id, combining citation chains."""
@@ -143,96 +159,22 @@ def _generate_cn_titles(records: list[EventRecord]) -> None:
     """Generate Chinese titles for ALL event records via LLM batch translation.
 
     Strategy: LLM translates all events in batches (20 per call).
-    Falls back to keyword pre-processing only if no LLM key is available.
+    Skipped entirely when no LLM key is configured (keyword substitution
+    produced mixed-language garbage).
     """
+    try:
+        from src.ai.llm_client import LLMClient
+        _llm_client = LLMClient()
+    except Exception:
+        _llm_client = None
+    if _llm_client is None:
+        # No LLM key configured — leave titles untranslated instead of
+        # emitting mixed-language keyword substitutions.
+        print("[CN translate] No LLM key — skipping Chinese title generation")
+        return
+
 
     import re
-
-    # Preprocessing: longest-match-first keyword substitution
-    _PREPROCESS: list[tuple[str, str]] = sorted([
-        ("RORZE", "乐孜芯创"), ("Brooks Automation", "Brooks自动化"),
-        ("Daifuku", "大福"), ("Murata Machinery", "村田机械"),
-        ("Hirata", "平田"), ("Genmark Automation", "Genmark"),
-        ("Nidec", "日本电产"),
-        ("SINFONIA Technology", "昕芙旎雅"),
-        ("Kensington", "Kensington"), ("JEL", "JEL"),
-        ("Cymechs", "Cymechs"),
-        ("Guona Semiconductor", "果纳半导体"),
-        ("果纳半导体", "果纳半导体"),
-        ("Mifei Technology", "弥费科技"),
-        ("弥费科技", "弥费科技"),
-        ("SIASUN", "新松机器人"),
-        ("新松机器人", "新松机器人"),
-        ("U.S.", "美国"), ("China", "中国"), ("Chinese", "中国"),
-        ("Japan", "日本"), ("Japanese", "日本"), ("Korea", "韩国"),
-        ("Europe", "欧洲"), ("Taiwan", "台湾"),
-        ("semiconductor", "半导体"), ("Semiconductor", "半导体"),
-        ("AMHS", "自动物料搬运系统"),
-        ("OHT", "天车"), ("overhead hoist", "天车"),
-        ("AGV", "AGV"), ("AMR", "自主移动机器人"),
-        ("stocker", "自动仓储"), ("Stocker", "自动仓储"),
-        ("EFEM", "设备前端模块"),
-        ("wafer sorter", "晶圆分选机"), ("Sorter", "分选机"),
-        ("load port", "装载端口"), ("Load Port", "装载端口"),
-        ("FOUP", "FOUP晶圆盒"),
-        ("FOSB", "FOSB晶圆盒"),
-        ("SMIF", "SMIF"),
-        ("wafer handling", "晶圆传输"),
-        ("wafer transfer", "晶圆传送"),
-        ("wafer transport", "晶圆搬运"),
-        ("wafer robot", "晶圆机器人"),
-        ("fab automation", "晶圆厂自动化"),
-        ("material handling", "物料搬运"),
-        ("material control", "物料控制"),
-        ("MCS", "物料控制系统"),
-        ("MES", "制造执行系统"),
-        ("clean stocker", "洁净仓储"),
-        ("purge", "净化"), ("purge system", "净化系统"),
-        ("new", "新"), ("New", "新"),
-        ("first", "首个"), ("First", "首个"),
-        ("largest", "最大"), ("Largest", "最大"),
-        ("record", "创纪录"), ("Record", "创纪录"),
-        ("breakthrough", "突破"), ("Breakthrough", "突破"),
-        ("milestone", "里程碑"), ("Milestone", "里程碑"),
-        ("delivery", "交付"), ("Delivery", "交付"),
-        ("launch", "推出"), ("Launch", "推出"),
-        ("announce", "宣布"), ("Announce", "宣布"),
-        ("Announces", "宣布"), ("announces", "宣布"),
-        ("Unveils", "发布"), ("unveils", "发布"),
-        ("Soars", "飙升"), ("Surges", "暴涨"),
-        ("Drops", "下跌"), ("Falls", "下跌"),
-        ("Rises", "上涨"), ("Grows", "增长"),
-        ("global", "全球"), ("Global", "全球"),
-        ("world", "全球"), ("World", "全球"),
-        ("market", "市场"), ("Market", "市场"),
-        ("revenue", "营收"), ("Revenue", "营收"),
-        ("shipment", "出货"), ("Shipment", "出货"),
-        ("capacity", "产能"), ("Capacity", "产能"),
-        ("manufacturing", "制造"), ("Manufacturing", "制造"),
-        ("AI", "AI"), ("artificial intelligence", "AI"),
-        ("data center", "数据中心"),
-        ("Kospi", "韩国KOSPI指数"),
-    ], key=lambda x: -len(x[0]))
-
-    for r in records:
-        en = r.title.strip()
-        cn = en
-        for term, cn_term in _PREPROCESS:
-            idx = 0
-            while True:
-                idx = cn.find(term, idx)
-                if idx == -1:
-                    break
-                before_ok = idx == 0 or not cn[idx - 1].isalnum() and cn[idx - 1] != "'"
-                after_ok = (idx + len(term) == len(cn)
-                            or not cn[idx + len(term)].isalnum() and cn[idx + len(term)] != "'")
-                if before_ok and after_ok:
-                    cn = cn[:idx] + cn_term + cn[idx + len(term):]
-                    idx += len(cn_term)
-                else:
-                    idx += 1
-        cn = re.sub(r'\s{2,}', ' ', cn).strip()
-        r.title_cn = cn if cn != en else ""
 
     # LLM batch translation for ALL events
     try:
@@ -320,19 +262,22 @@ def run_weekly(config: dict):
     merged = _merge_records(records)
     print(f"[Weekly] Merged: {len(merged)} unique events (from {len(records)} raw)")
 
-    dedup = Deduplicator(str(ROOT / "data" / "state.json"))
-    new_records, seen = dedup.deduplicate(merged)
+    qf = QualityFilter(config)
+    filtered, qstats = qf.filter(merged)
+    print(f"[Weekly] Quality filter: {qstats}")
+    if not filtered:
+        print("[Weekly] No records passed quality filter.")
+        return
+
+    dedup = Deduplicator(str(ROOT / "data" / "dedup_state.json"))
+    new_records, seen = dedup.deduplicate(filtered)
     print(f"[Weekly] Dedup: {len(new_records)} new / {seen} already seen")
 
     if not new_records:
         print("[Weekly] All events already seen this cycle.")
         return
 
-    # Filter + score
-    qf = QualityFilter(config)
     scorer = Scorer(config)
-
-    new_records = qf.filter(new_records)
     new_records = scorer.score(new_records)
     new_records.sort(key=lambda r: r.confidence_score, reverse=True)
 
@@ -363,15 +308,19 @@ def run_weekly(config: dict):
         print(f"[Weekly] AI skipped (will render data-only report): {e}")
 
     # Render
-    renderer = MarkdownRenderer(str(ROOT / "output"))
+    category_order = [c.get("name") for c in config.get("categories", [])]
+    renderer = MarkdownRenderer(str(ROOT / "output"), category_order=category_order)
     stats = {
         "本周采集": len(records),
-        "去重后": len(new_records),
+        "历史已见": seen,
+        "质量过滤排除": sum(qstats.values()) - qstats["kept"] - qstats["fallback_excluded"],
+        "占位骨架排除": qstats["fallback_excluded"],
         "新事件": len(new_records),
         "可信度分布": grade_str,
         "独立生态覆盖": _eco_coverage(new_records),
     }
     renderer.render_weekly_report(new_records, deep_analysis=deep_analysis, stats=stats)
+    dedup.save()
 
     print(f"[Weekly] ✅ Done -- report written to output/")
     print(f"[Weekly] Top event: {new_records[0].title[:80] if new_records else 'N/A'}")
