@@ -7,7 +7,7 @@
     },
     "evt:dad4a4903fc9": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W42",
+      "last_seen_week": "2026-W43",
       "title": "Rorze Systems Corp (071280)"
     },
     "evt:f8cebbc01b2c": {
@@ -52,7 +52,7 @@
     },
     "evt:d4842f64c687": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W42",
+      "last_seen_week": "2026-W43",
       "title": "Artificial Intelligence"
     },
     "evt:b528e5d0df13": {
@@ -72,17 +72,17 @@
     },
     "evt:fca0e1eda050": {
       "first_seen_week": "2026-W42",
-      "last_seen_week": "2026-W42",
+      "last_seen_week": "2026-W43",
       "title": "VanEck Semiconductor ETF"
     },
     "evt:6d63b3833a89": {
       "first_seen_week": "2026-W42",
-      "last_seen_week": "2026-W42",
+      "last_seen_week": "2026-W43",
       "title": "Best Semiconductor Stocks"
     },
     "evt:394d13f1790c": {
       "first_seen_week": "2026-W42",
-      "last_seen_week": "2026-W42",
+      "last_seen_week": "2026-W43",
       "title": "Taiwan Semiconductor Manufacturing Co. Ltd. ADR"
     },
     "evt:e63dedba4784": {
@@ -104,6 +104,46 @@
       "first_seen_week": "2026-W42",
       "last_seen_week": "2026-W42",
       "title": "Applied Materials Bets $5B on a New Model for Chip Innovation"
+    },
+    "evt:a5bfaeae7d75": {
+      "first_seen_week": "2026-W43",
+      "last_seen_week": "2026-W43",
+      "title": "ON Semiconductor Corporation (ON)"
+    },
+    "evt:2a26b2cdf404": {
+      "first_seen_week": "2026-W43",
+      "last_seen_week": "2026-W43",
+      "title": "News Daifuku Co., Ltd."
+    },
+    "evt:e7ed42f17407": {
+      "first_seen_week": "2026-W43",
+      "last_seen_week": "2026-W43",
+      "title": "Tech News | Today's Latest Technology News | Reuters"
+    },
+    "evt:47794ba719b0": {
+      "first_seen_week": "2026-W43",
+      "last_seen_week": "2026-W43",
+      "title": "Final Porta wireless on-ear headphones launch with ultralight Air Wire design"
+    },
+    "evt:af17e738a696": {
+      "first_seen_week": "2026-W43",
+      "last_seen_week": "2026-W43",
+      "title": "Best Tech Stocks To Buy Now For 2026"
+    },
+    "evt:94d4a89ebd38": {
+      "first_seen_week": "2026-W43",
+      "last_seen_week": "2026-W43",
+      "title": "AI Data Centers Join EVs as SiC Demand Engines in Infineon-Wolfspeed 200mm Wafer Deal"
+    },
+    "evt:ce5a40a71dd6": {
+      "first_seen_week": "2026-W43",
+      "last_seen_week": "2026-W43",
+      "title": "Serve Robotics Inc. (SERV)"
+    },
+    "evt:3535f586a4e5": {
+      "first_seen_week": "2026-W43",
+      "last_seen_week": "2026-W43",
+      "title": "TSMC熊本第2工場の3nm生産計画、経産省が認定：28年末生産開始"
     }
   }
 }
