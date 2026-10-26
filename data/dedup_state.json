@@ -7,7 +7,7 @@
     },
     "evt:dad4a4903fc9": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W43",
+      "last_seen_week": "2026-W44",
       "title": "Rorze Systems Corp (071280)"
     },
     "evt:f8cebbc01b2c": {
@@ -32,7 +32,7 @@
     },
     "evt:54a68c3e03ef": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W40",
+      "last_seen_week": "2026-W44",
       "title": "Navitas Semiconductor Corporation (NVTS)"
     },
     "evt:3c95cbf0efb8": {
@@ -52,12 +52,12 @@
     },
     "evt:d4842f64c687": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W43",
+      "last_seen_week": "2026-W44",
       "title": "Artificial Intelligence"
     },
     "evt:b528e5d0df13": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W42",
+      "last_seen_week": "2026-W44",
       "title": "SRT Marine Systems PLC"
     },
     "evt:527e0c70493a": {
@@ -87,7 +87,7 @@
     },
     "evt:e63dedba4784": {
       "first_seen_week": "2026-W42",
-      "last_seen_week": "2026-W42",
+      "last_seen_week": "2026-W44",
       "title": "List of Semiconductor Stocks in India"
     },
     "evt:b648d2f51c81": {
@@ -117,7 +117,7 @@
     },
     "evt:e7ed42f17407": {
       "first_seen_week": "2026-W43",
-      "last_seen_week": "2026-W43",
+      "last_seen_week": "2026-W44",
       "title": "Tech News | Today's Latest Technology News | Reuters"
     },
     "evt:47794ba719b0": {
@@ -127,7 +127,7 @@
     },
     "evt:af17e738a696": {
       "first_seen_week": "2026-W43",
-      "last_seen_week": "2026-W43",
+      "last_seen_week": "2026-W44",
       "title": "Best Tech Stocks To Buy Now For 2026"
     },
     "evt:94d4a89ebd38": {
@@ -144,6 +144,46 @@
       "first_seen_week": "2026-W43",
       "last_seen_week": "2026-W43",
       "title": "TSMC熊本第2工場の3nm生産計画、経産省が認定：28年末生産開始"
+    },
+    "evt:f6c0b8195cf3": {
+      "first_seen_week": "2026-W44",
+      "last_seen_week": "2026-W44",
+      "title": "Rorze (6323) Stock Forecast & Price Target"
+    },
+    "evt:91829d182929": {
+      "first_seen_week": "2026-W44",
+      "last_seen_week": "2026-W44",
+      "title": "indie Semiconductor, Inc. (INDI)"
+    },
+    "evt:2fdfe186bb45": {
+      "first_seen_week": "2026-W44",
+      "last_seen_week": "2026-W44",
+      "title": "Murata Manufacturing Co. Ltd. ADR"
+    },
+    "evt:3ea3ded13bc3": {
+      "first_seen_week": "2026-W44",
+      "last_seen_week": "2026-W44",
+      "title": "Nidec Corp."
+    },
+    "evt:f4054940449e": {
+      "first_seen_week": "2026-W44",
+      "last_seen_week": "2026-W44",
+      "title": "The AI Packaging Challenge: 5 Reasons Panels Are Gaining Momentum"
+    },
+    "evt:6cf0b6b71a16": {
+      "first_seen_week": "2026-W44",
+      "last_seen_week": "2026-W44",
+      "title": "GlobalFoundries Opens Advanced Facilities Control Centre in Singapore"
+    },
+    "evt:515f9e336e42": {
+      "first_seen_week": "2026-W44",
+      "last_seen_week": "2026-W44",
+      "title": "In Orbit, Useful Life Becomes a Performance Metric"
+    },
+    "evt:3e0875a59d23": {
+      "first_seen_week": "2026-W44",
+      "last_seen_week": "2026-W44",
+      "title": "Nikon Opens Orders for FX-6ASLH Submicron FPD Lithography System for OLED and LCD Panels"
     }
   }
 }
