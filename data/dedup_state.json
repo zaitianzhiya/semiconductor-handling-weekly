@@ -7,7 +7,7 @@
     },
     "evt:dad4a4903fc9": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W45",
+      "last_seen_week": "2026-W47",
       "title": "Rorze Systems Corp (071280)"
     },
     "evt:f8cebbc01b2c": {
@@ -52,12 +52,12 @@
     },
     "evt:d4842f64c687": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W46",
+      "last_seen_week": "2026-W47",
       "title": "Artificial Intelligence"
     },
     "evt:b528e5d0df13": {
       "first_seen_week": "2026-W40",
-      "last_seen_week": "2026-W45",
+      "last_seen_week": "2026-W47",
       "title": "SRT Marine Systems PLC"
     },
     "evt:527e0c70493a": {
@@ -192,7 +192,7 @@
     },
     "evt:55fba1277067": {
       "first_seen_week": "2026-W45",
-      "last_seen_week": "2026-W45",
+      "last_seen_week": "2026-W47",
       "title": "Rorze Corporation (6323.T)"
     },
     "evt:67bce8f9ce4b": {
@@ -299,6 +299,46 @@
       "first_seen_week": "2026-W46",
       "last_seen_week": "2026-W46",
       "title": "Still Looking for Diamonds"
+    },
+    "evt:dd8860a46c48": {
+      "first_seen_week": "2026-W47",
+      "last_seen_week": "2026-W47",
+      "title": "Rorze Systems Stock Price History"
+    },
+    "evt:1299901b6c6c": {
+      "first_seen_week": "2026-W47",
+      "last_seen_week": "2026-W47",
+      "title": "ロードポート市場分析レポート（2026年）：2032年750百万米ドル到達予測"
+    },
+    "evt:be8aa4a9e347": {
+      "first_seen_week": "2026-W47",
+      "last_seen_week": "2026-W47",
+      "title": "SPEL Semiconductor share price"
+    },
+    "evt:7a9f7df6d6aa": {
+      "first_seen_week": "2026-W47",
+      "last_seen_week": "2026-W47",
+      "title": "The Race to Commercialize Gallium Oxide Wafers and Devices"
+    },
+    "evt:3e42973b5738": {
+      "first_seen_week": "2026-W47",
+      "last_seen_week": "2026-W47",
+      "title": "SIASUN (SZ:300024) Annual Report"
+    },
+    "evt:8b0687dc7441": {
+      "first_seen_week": "2026-W47",
+      "last_seen_week": "2026-W47",
+      "title": "Weekly news roundup: Memory giants forge rare alliance; race to secure equipment capacity"
+    },
+    "evt:8f8d2a403060": {
+      "first_seen_week": "2026-W47",
+      "last_seen_week": "2026-W47",
+      "title": "When Giants Falter, Will Japan's Seeds Sprout? — The Global Shift in AI Semiconductors and Expectations for Japan's Creativity — MIRAI CAT LAB | Laboratory for Thinking ..."
+    },
+    "evt:b641be991d98": {
+      "first_seen_week": "2026-W47",
+      "last_seen_week": "2026-W47",
+      "title": "Latest Senate Polls: Midterm Elections 2026"
     }
   }
 }
